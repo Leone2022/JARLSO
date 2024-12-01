@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incident Report Form</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your existing CSS file -->
+    <link rel="stylesheet" href="forms.css"> <!-- Link to the new forms CSS file -->
+    <style>
+        /* Include the provided CSS directly for simplicity */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(to right, #1e3c72, #2a5298); /* Gradient blue background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Full height for vertical centering */
+            padding: 20px; /* Add some padding for better spacing */
+        }
+        
+        .container {
+            background: #ffffff; /* White background for container */
+            width: 90%; /* Increase width to 90% of viewport */
+            max-width: 1200px; /* Limit maximum width */
+            padding: 2rem; /* Add padding for a more spacious look */
+            border-radius: 10px;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1); /* Softer shadow for a more professional look */
+        }
+        
+        h1 {
+            margin-bottom: 1.5rem; /* Spacing below the heading */
+            color: #1e3c72; /* Dark blue color for heading */
+            text-align: center;
+        }
+        
+        table {
+            width: 100%; /* Make table take full width */
+            border-collapse: collapse; /* Ensure table borders collapse */
+            margin-bottom: 2rem; /* Add space below the table */
+        }
+        
+        td {
+            padding: 10px;
+            vertical-align: top;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        input[type="text"], input[type="date"], textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        .submit-button {
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            background: #2a5298;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .submit-button:hover {
+            background: #1e3c72;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>INCIDENT REPORT FORM - JTS/IR/F015</h1>
+        <form id="incidentReportForm" action="submit_incident_report.php" method="post">
+            <table>
+                <tbody>
+                    <tr>
+                        <td><label for="reportedBy">Team Leader:</label></td>
+                        <td><input type="text" id="reportedBy" name="reportedBy" required></td>
+                        <td><label for="dateReported">Date Reported:</label></td>
+                        <td><input type="date" id="dateReported" name="dateReported" required></td>
+                        <td><label for="incidentNo">Incident No:</label></td>
+                        <td><input type="text" id="incidentNo" name="incidentNo" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="reportedByClient">Reported by client (yes / no):</label></td>
+                        <td><input type="text" id="reportedByClient" name="reportedByClient" required></td>
+                        <td><label for="clientName">Client (name):</label></td>
+                        <td><input type="text" id="clientName" name="clientName"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="affectedProject">Affected project / activity (Yes / No):</label></td>
+                        <td><input type="text" id="affectedProject" name="affectedProject" required></td>
+                        <td><label for="projectName">Project name:</label></td>
+                        <td><input type="text" id="projectName" name="projectName"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="hseAspects">HSE Aspects or Potential Risk:</label></td>
+                        <td colspan="5"><textarea id="hseAspects" name="hseAspects" rows="2" required></textarea></td>
+                    </tr>
+                    <tr>
+                        <td><label for="incidentDescription">Incident / Accident Description (i.e. where, when, what, observed by who?):</label></td>
+                        <td colspan="5"><textarea id="incidentDescription" name="incidentDescription" rows="4" required></textarea></td>
+                    </tr>
+                    <tr>
+                        <td><label for="correctiveActions">Corrective Actions:</label></td>
+                        <td colspan="5"><textarea id="correctiveActions" name="correctiveActions" rows="3" required></textarea></td>
+                    </tr>
+                    <tr>
+                        <td><label for="rootCauseAnalysis">Root Cause Analysis (i.e. Analysis of what circumstances caused or led to the incident):</label></td>
+                        <td colspan="5"><textarea id="rootCauseAnalysis" name="rootCauseAnalysis" rows="4" required></textarea></td>
+                    </tr>
+                    <tr>
+                        <td><label for="carriedOutBy">Carried out by (names):</label></td>
+                        <td><input type="text" id="carriedOutBy" name="carriedOutBy" required></td>
+                        <td><label for="dateCarriedOut">Date:</label></td>
+                        <td><input type="date" id="dateCarriedOut" name="dateCarriedOut" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="verificationComments">Verification Comments and Close out of Corrective Action:</label></td>
+                        <td colspan="5"><textarea id="verificationComments" name="verificationComments" rows="3" required></textarea></td>
+                    </tr>
+                    <tr>
+                        <td><label for="preventiveActions">Preventive / Improvement actions (i.e. actions to hinder a potential incident/ accident; or actions towards improving systems, processes, skills, materials or products):</label></td>
+                        <td colspan="5"><textarea id="preventiveActions" name="preventiveActions" rows="3" required></textarea></td>
+                    </tr>
+                    <tr>
+                        <td><label for="verificationCommentsPreventive">Verification comments and close out of preventive/ improvement action (i.e. verify or evaluate that the actions described above are implemented and found effective):</label></td>
+                        <td colspan="5"><textarea id="verificationCommentsPreventive" name="verificationCommentsPreventive" rows="3" required></textarea></td>
+                    </tr>
+                    <tr>
+                        <td><label for="reportName">Name:</label></td>
+                        <td><input type="text" id="reportName" name="reportName" required></td>
+                        <td><label for="reportDate">Date:</label></td>
+                        <td><input type="date" id="reportDate" name="reportDate" required></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <center>
+                <button type="submit" class="submit-button">Submit</button>
+            </center>
+        </form>
+    </div>
+</body>
+</html>

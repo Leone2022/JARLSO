@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Aid Kit Checklist</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your existing CSS file -->
+    <link rel="stylesheet" href="forms.css"> <!-- Link to the new forms CSS file -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(to right, #1e3c72, #2a5298); /* Gradient blue background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full height for vertical centering */
+        }
+        
+        .container {
+            background: #ffffff; /* White background for container */
+            width: 90%;
+            max-width: 800px;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1); /* Softer shadow for a more professional look */
+            text-align: center; /* Center text inside the container */
+        }
+        
+        h1 {
+            margin-bottom: 1.5rem; /* Spacing below the heading */
+            color: #1e3c72; /* Dark blue color for heading */
+        }
+        
+        table {
+            width: 100%;
+            margin-bottom: 1rem;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+        }
+        
+        .btn {
+            font-size: 1.1rem;
+            padding: 10px 20px; /* Padding for button */
+            border-radius: 5px;
+            outline: none;
+            border: none;
+            background: #2a5298; /* Blue color for button */
+            color: #ffffff; /* White text color */
+            cursor: pointer;
+            transition: 0.3s; /* Smooth transition on hover */
+        }
+        
+        .btn:hover {
+            background: #1e3c72; /* Darker blue color on hover */
+            color: #ffffff; /* Ensure text remains white on hover */
+        }
+        
+        .confirmation {
+            margin-top: 1rem;
+        }
+        
+        .submit-button {
+            background: #2a5298; /* Blue color for submit button */
+            color: #ffffff; /* White text color */
+        }
+        
+        .submit-button:hover {
+            background: #1e3c72; /* Darker blue color on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>FIRST AID KIT - Checklist - JTS/FA/F046</h1>
+        <form id="firstAidKitChecklistForm" action="submit_first_aid_kit_checklist.php" method="post">
+            <table id="checklistTable">
+                <thead>
+                    <tr>
+                        <th>ITEM</th>
+                        <th>DESCRIPTION</th>
+                        <th>QUANTITY</th>
+                        <th>ACTION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Initial Row -->
+                    <tr>
+                        <td><input type="text" name="item1" required></td>
+                        <td><input type="text" name="description1" required></td>
+                        <td><input type="number" name="quantity1" required></td>
+                        <td><button type="button" class="btn" onclick="removeRow(this)">Remove</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <button type="button" class="btn" onclick="addRow()">Add Row</button>
+            
+            <div class="confirmation">
+                <p>Team Leader Name</p>
+                <label for="confirmName">Name:</label>
+                <input type="text" id="confirmName" name="confirmName" required>
+                <label for="confirmDate">Date:</label>
+                <input type="date" id="confirmDate" name="confirmDate" required>
+            </div>
+            
+            <center>
+                <button type="submit" class="submit-button">Submit</button>
+            </center>
+        </form>
+    </div>
+
+    <script>
+        let rowCount = 1;
+
+        function addRow() {
+            rowCount++;
+            const tableBody = document.querySelector('#checklistTable tbody');
+            const newRow = document.createElement('tr');
+
+            newRow.innerHTML = `
+                <td><input type="text" name="item${rowCount}" required></td>
+                <td><input type="text" name="description${rowCount}" required></td>
+                <td><input type="number" name="quantity${rowCount}" required></td>
+                <td><button type="button" class="btn" onclick="removeRow(this)">Remove</button></td>
+            `;
+
+            tableBody.appendChild(newRow);
+        }
+
+        function removeRow(button) {
+            const row = button.parentNode.parentNode;
+            row.remove();
+        }
+    </script>
+</body>
+</html>

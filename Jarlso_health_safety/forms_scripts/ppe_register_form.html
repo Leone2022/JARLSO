@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Protective Equipment and Tools Register</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="forms.css">
+    <style>
+        /* Include the provided CSS directly for simplicity */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: #ffffff;
+            width: 90%;
+            max-width: 1200px;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-bottom: 1.5rem;
+            color: #1e3c72;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 1rem;
+            color: #1e3c72;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"], .form-group input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+
+        .signature-section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+
+        .signature-section div {
+            flex: 1;
+            margin-right: 1rem;
+        }
+
+        .signature-section div:last-child {
+            margin-right: 0;
+        }
+
+        .signature-section label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .signature-section input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+
+        .submit-button {
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            background: #2a5298;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-button:hover {
+            background: #1e3c72;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <center>
+            <h1>Personal Protective Equipment and Tools Register</h1>
+        </center>
+        <form id="ppeForm" action="submit_ppe.php" method="post">
+            <div class="form-group">
+                <label for="siteID">Site ID:</label>
+                <input type="text" id="siteID" name="siteID" required>
+            </div>
+            <div class="form-group">
+                <label for="siteName">Site Name:</label>
+                <input type="text" id="siteName" name="siteName" required>
+            </div>
+            <div class="form-group">
+                <label for="projectTitle">Project Title:</label>
+                <input type="text" id="projectTitle" name="projectTitle" required>
+            </div>
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            
+            <h2>Verification of Critical PPEs</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>PPEs</th>
+                        <th>Yes</th>
+                        <th>No</th>
+                        <th>N/A</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Safety Boot</td>
+                        <td><input type="radio" name="safetyBoot" value="Yes"></td>
+                        <td><input type="radio" name="safetyBoot" value="No"></td>
+                        <td><input type="radio" name="safetyBoot" value="N/A"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Helmet</td>
+                        <td><input type="radio" name="helmet" value="Yes"></td>
+                        <td><input type="radio" name="helmet" value="No"></td>
+                        <td><input type="radio" name="helmet" value="N/A"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Reflective Jacket</td>
+                        <td><input type="radio" name="reflectiveJacket" value="Yes"></td>
+                        <td><input type="radio" name="reflectiveJacket" value="No"></td>
+                        <td><input type="radio" name="reflectiveJacket" value="N/A"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Full Body Harness</td>
+                        <td><input type="radio" name="fullBodyHarness" value="Yes"></td>
+                        <td><input type="radio" name="fullBodyHarness" value="No"></td>
+                        <td><input type="radio" name="fullBodyHarness" value="N/A"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Rescue Kits Available on Site</td>
+                        <td><input type="radio" name="rescueKits" value="Yes"></td>
+                        <td><input type="radio" name="rescueKits" value="No"></td>
+                        <td><input type="radio" name="rescueKits" value="N/A"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Hand Gloves</td>
+                        <td><input type="radio" name="handGloves" value="Yes"></td>
+                        <td><input type="radio" name="handGloves" value="No"></td>
+                        <td><input type="radio" name="handGloves" value="N/A"></td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Nose Mask</td>
+                        <td><input type="radio" name="noseMask" value="Yes"></td>
+                        <td><input type="radio" name="noseMask" value="No"></td>
+                        <td><input type="radio" name="noseMask" value="N/A"></td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Ear Plugs</td>
+                        <td><input type="radio" name="earPlugs" value="Yes"></td>
+                        <td><input type="radio" name="earPlugs" value="No"></td>
+                        <td><input type="radio" name="earPlugs" value="N/A"></td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>First Aider(s) on Site is Certified</td>
+                        <td><input type="radio" name="firstAiderCertified" value="Yes"></td>
+                        <td><input type="radio" name="firstAiderCertified" value="No"></td>
+                        <td><input type="radio" name="firstAiderCertified" value="N/A"></td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>First Aid Kits are Available on Site</td>
+                        <td><input type="radio" name="firstAidKits" value="Yes"></td>
+                        <td><input type="radio" name="firstAidKits" value="No"></td>
+                        <td><input type="radio" name="firstAidKits" value="N/A"></td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>Goggles</td>
+                        <td><input type="radio" name="goggles" value="Yes"></td>
+                        <td><input type="radio" name="goggles" value="No"></td>
+                        <td><input type="radio" name="goggles" value="N/A"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="signature-section">
+                <div>
+                    <label for="teamLeaderName">Team Leader's Name:</label>
+                    <input type="text" id="teamLeaderName" name="teamLeaderName">
+                    <label for="teamLeaderDate">Date:</label>
+                    <input type="date" id="teamLeaderDate" name="teamLeaderDate">
+                </div>
+                <div>
+                    <label for="hseName">HSE Representative's Name:</label>
+                    <input type="text" id="hseName" name="hseName">    
+                </div>
+                <div>
+                    <label for="projectManagerName">Project Manager's Name:</label>
+                    <input type="text" id="projectManagerName" name="projectManagerName">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="submit-button">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

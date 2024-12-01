@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toolbox Meeting Form and Pre-Activity Debrief</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your existing CSS file -->
+    <link rel="stylesheet" href="forms.css"> <!-- Link to the new forms CSS file -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to right, #1e3c72, #2a5298); /* Gradient blue background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Ensure minimum height for vertical centering */
+            padding: 20px; /* Padding for smaller screens */
+            color: rgb(26, 3, 3);
+        }
+
+        .container {
+            background: #ffffff; /* White background for container */
+            width: 150%;
+            max-width: 1000px;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1); /* Softer shadow for a more professional look */
+            text-align: center; /* Center text inside the container */
+            overflow-y: auto; /* Allow scrolling for overflowing content */
+        }
+
+        h1, h2 {
+            color: #1e3c72; /* Dark blue color for headings */
+        }
+
+        h1 {
+            margin-bottom: 1.5rem; /* Spacing below the heading */
+        }
+
+        h2 {
+            margin-top: 1.5rem; /* Spacing above the subheadings */
+        }
+
+        .form-group {
+            margin-bottom: 1rem; /* Spacing between form groups */
+            text-align: left; /* Align form labels and inputs to the left */
+        }
+
+        .form-group label {
+            display: block; /* Make labels block elements */
+            margin-bottom: 0.5rem; /* Spacing below labels */
+            color: #333; /* Darker color for better readability */
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%; /* Full width inputs and textareas */
+            padding: 0.5rem; /* Padding inside inputs and textareas */
+            border: 1px solid #bdbdbd; /* Light border */
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        table {
+            width: 100%;
+            margin-bottom: 1rem;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 0.5rem;
+            border: 1px solid #000000;
+        }
+
+        th {
+            background-color: #1e3c72; /* Dark blue for table headers */
+            color: rgb(255, 255, 255);
+        }
+
+        .btn {
+            font-size: 1.1rem;
+            padding: 10px 20px; /* Padding for button */
+            border-radius: 5px;
+            outline: none;
+            border: none;
+            background: #093561; /* Blue color for button */
+            color: #ffffff; /* White text color */
+            cursor: pointer;
+            transition: 0.3s; /* Smooth transition on hover */
+        }
+
+        .btn:hover {
+            background: #1e3c72; /* Darker blue color on hover */
+            color: #ffffff; /* Ensure text remains white on hover */
+        }
+
+        .submit-button {
+            background: #2a5298; /* Blue color for submit button */
+            color: #ffffff; /* White text color */
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            background: #2a5298;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-button:hover {
+            background: #1e3c72; /* Darker blue color on hover */
+        }
+    </style>
+    <script>
+        function addRow() {
+            var table = document.getElementById("attendance").getElementsByTagName('tbody')[0];
+            var rowCount = table.rows.length + 1;
+            var row = table.insertRow();
+            row.innerHTML = `
+                <td>${rowCount}</td>
+                <td><input type="text" name="name${rowCount}" required></td>
+                <td><input type="text" name="role${rowCount}" required></td>
+                <td><input type="text" name="contact${rowCount}" required></td>
+                <td><input type="text" name="signature${rowCount}" required></td>
+                <td><button type="button" class="btn" onclick="removeRow(this)">Remove</button></td>
+            `;
+        }
+
+        function removeRow(button) {
+            var row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Toolbox Meeting Form and Pre-Activity Debrief</h1>
+        <form id="toolboxForm" action="submit_toolbox.php" method="post">
+            <div class="form-group">
+                <label for="siteID">Site ID:</label>
+                <input type="text" id="siteID" name="siteID" required>
+            </div>
+            <div class="form-group">
+                <label for="siteName">Name:</label>
+                <input type="text" id="siteName" name="siteName" required>
+            </div>
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+
+            <h2>ATTENDANCE</h2>
+            <table id="attendance">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Name</th>
+                        <th>Role (Position)</th>
+                        <th>Contact no.</th>
+                        <th>Signature</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><input type="text" name="name1" required></td>
+                        <td><input type="text" name="role1" required></td>
+                        <td><input type="text" name="contact1" required></td>
+                        <td><input type="text" name="signature1" required></td>
+                        <td><button type="button" class="btn" onclick="removeRow(this)">Remove</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" class="btn" onclick="addRow()">Add Row</button>
+
+            <h2>Activity for the day</h2>
+            <div class="form-group">
+                <label for="activityDetails">Details of the Toolbox meeting:</label>
+                <textarea id="activityDetails" name="activityDetails" rows="4" required></textarea>
+            </div>
+
+            <h2>Verification of Critical PPEs & Certificate of workers on site</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>PPEs</th>
+                        <th>Yes</th>
+                        <th>No</th>
+                        <th>N/A</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Safety Boot</td>
+                        <td><input type="radio" name="safetyBoot" value="Yes"></td>
+                        <td><input type="radio" name="safetyBoot" value="No"></td>
+                        <td><input type="radio" name="safetyBoot" value="N/A"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Helmet</td>
+                        <td><input type="radio" name="helmet" value="Yes"></td>
+                        <td><input type="radio" name="helmet" value="No"></td>
+                        <td><input type="radio" name="helmet" value="N/A"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Gloves</td>
+                        <td><input type="radio" name="gloves" value="Yes"></td>
+                        <td><input type="radio" name="gloves" value="No"></td>
+                        <td><input type="radio" name="gloves" value="N/A"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Goggles</td>
+                        <td><input type="radio" name="goggles" value="Yes"></td>
+                        <td><input type="radio" name="goggles" value="No"></td>
+                        <td><input type="radio" name="goggles" value="N/A"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Ear Protection</td>
+                        <td><input type="radio" name="earProtection" value="Yes"></td>
+                        <td><input type="radio" name="earProtection" value="No"></td>
+                        <td><input type="radio" name="earProtection" value="N/A"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Respirator</td>
+                        <td><input type="radio" name="respirator" value="Yes"></td>
+                        <td><input type="radio" name="respirator" value="No"></td>
+                        <td><input type="radio" name="respirator" value="N/A"></td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Other PPE</td>
+                        <td><input type="radio" name="otherPPE" value="Yes"></td>
+                        <td><input type="radio" name="otherPPE" value="No"></td>
+                        <td><input type="radio" name="otherPPE" value="N/A"></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h2>Declaration</h2>
+            <div class="form-group">
+                <label for="declaration">I ……………………………………………………… have thoroughly discussed all potential risks associated with today’s activities on site and all mitigations have been communicated clearly with all persons working on the site. The same will be done with any other person who comes to perform any other activities under my control.</label>
+                <textarea id="declaration" name="declaration" rows="4" required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="declarationSignature">Signature:</label>
+                <input type="text" id="declarationSignature" name="declarationSignature" required>
+            </div>
+            <div class="form-group">
+                <label for="declarationDate">Date:</label>
+                <input type="date" id="declarationDate" name="declarationDate" required>
+            </div>
+            <center>
+                <button type="submit" class="submit-button">Submit</button>
+            </center>
+        </form>
+    </div>
+</body>
+</html>
